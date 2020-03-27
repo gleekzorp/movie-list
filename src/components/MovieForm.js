@@ -1,14 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { MovieContext } from '../contexts/MovieContext';
+import { addMovie } from '../actions/movieActions';
 
 const MovieForm = () => {
-    const { addMovie } = useContext(MovieContext)
+    const { movieDispatch } = useContext(MovieContext)
     const [title, setTitle] = useState('')
     const [genre, setGenre] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        addMovie(title, genre)
+        movieDispatch(addMovie(title, genre))
         setTitle('')
         setGenre('')
     }
@@ -16,7 +17,6 @@ const MovieForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <input
-                type="text"
                 placeholder="Movie Title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
