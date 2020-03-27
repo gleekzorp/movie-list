@@ -17,6 +17,7 @@ const MovieForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <input
+                type="text"
                 placeholder="Movie Title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
